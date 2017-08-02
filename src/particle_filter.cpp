@@ -62,12 +62,6 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 	//  http://www.cplusplus.com/reference/random/default_random_engine/
 	default_random_engine gen;
 	for(int i = 0; i < num_particles; i++){
-		// double new_x;
-		// double new_y;
-		// double new_theta;
-
-		// Particle p = particles[i];
-
 		Particle p = particles[i];
 
 		double new_x = p.x;
