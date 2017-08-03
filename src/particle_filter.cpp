@@ -62,7 +62,7 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 	//  http://www.cplusplus.com/reference/random/default_random_engine/
 	default_random_engine gen;
 	for(int i = 0; i < num_particles; i++){
-		Particle p = particles[i];
+		Particle &p = particles[i];
 
 		double new_x = p.x;
 		double new_y = p.y;
@@ -82,9 +82,10 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 	    std::normal_distribution<double> noise_y(0, std_pos[1]);
 	    std::normal_distribution<double> noise_psi(0, std_pos[2]);
 		
-		particles[i].x = new_x + noise_x(gen);
-		particles[i].y = new_y + noise_y(gen);
-		particles[i].theta  = new_theta + noise_psi(gen);	}
+		p.x = new_x + noise_x(gen);
+		p.y = new_y + noise_y(gen);
+		p.theta  = new_theta + noise_psi(gen);	
+	}
 
 }
 
